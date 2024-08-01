@@ -36,7 +36,7 @@ locals {
       alarm_statistic           = "Maximum"
       alarm_period              = 10
       alarm_namespace           = "AWS/Lambda"
-      alarm_metric_name         = "Maximum"
+      alarm_metric_name         = "Errors"
       alarm_threshold           = 0.5
       alarm_actions_enabled     = true
       alarm_actions             = ["sns_topic_arn"]
