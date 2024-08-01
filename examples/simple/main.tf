@@ -24,5 +24,5 @@ module "monitoring_alerts" {
   alarm_evaluate_low_sample_count_percentiles = try(each.value.alarm_evaluate_low_sample_count_percentiles, null)
   alarm_tags                                  = try(each.value.tags, {})
   alarm_metric_querry_metric_map              = try(each.value.alarm_metric_querry_metric_map, null)
-  general_tags                                = local.tags
+  general_tags                                = local.tags
 }
