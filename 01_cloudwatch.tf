@@ -39,11 +39,9 @@ resource "aws_cloudwatch_metric_alarm" "alarm" {
           unit        = metric.value.unit
           namespace   = metric.value.namespace
         }
-
       }
       period      = var.alarm_metric_querry_period
       return_data = var.alarm_metric_querry_return_data
     }
-
   }
 }
