@@ -44,7 +44,7 @@ variable "alarm_period" {
   description = "The period in seconds over which the specified statistic is applied. Valid values are 10, 30, or any multiple of 60."
   type        = number
   validation {
-    condition = (
+    condition = can(
       var.alarm_period == 10 ||
       var.alarm_period == 30 ||
       (var.alarm_period % 60 == 0 && var.alarm_period > 0)
@@ -160,10 +160,10 @@ variable "alarm_evaluate_low_sample_count_percentiles" {
   description = "Used only for alarms based on percentiles. If you specify ignore, the alarm state will not change during periods with too few data points to be statistically significant. If you specify evaluate or omit this parameter, the alarm will always be evaluated and possibly change state no matter how many data points are available. Valid values are: ignore, evaluate."
   type        = string
   validation {
-    condition     = var.alarm_evaluate_low_sample_count_percentiles == "ignore" || var.alarm_evaluate_low_sample_count_percentiles == "evaluate"
+    condition     = var.alarm_evaluate_low_sample_count_percentiles == "ignore" || var.alarm_evaluate_low_sample_count_percentiles == "evaluate" || var.alarm_evaluate_low_sample_count_percentiles == null
     error_message = "The evaluate_low_sample_count_percentiles value must be either 'ignore' or 'evaluate'."
   }
-  default = "evaluate"
+  default = null
 }
 
 variable "alarm_tags" {
@@ -217,7 +217,7 @@ variable "alarm_metric_querry_period" {
   description = "Granularity in seconds of returned data points."
   type        = number
   validation {
-    condition = (
+    condition = can(
       var.alarm_metric_querry_period == 10 ||
       var.alarm_metric_querry_period == 30 ||
       (var.alarm_metric_querry_period % 60 == 0 && var.alarm_metric_querry_period > 0)
