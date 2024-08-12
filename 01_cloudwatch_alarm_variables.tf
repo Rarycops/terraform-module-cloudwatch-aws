@@ -15,7 +15,8 @@ variable "alarm_comparison_operator" {
       var.alarm_comparison_operator == "LessThanOrEqualToThreshold" ||
       var.alarm_comparison_operator == "LessThanLowerOrGreaterThanUpperThreshold" ||
       var.alarm_comparison_operator == "LessThanLowerThreshold" ||
-      var.alarm_comparison_operator == "GreaterThanUpperThreshold"
+      var.alarm_comparison_operator == "GreaterThanUpperThreshold" ||
+      var.alarm_comparison_operator == null
     )
     error_message = "The comparison operator must be one of the following: GreaterThanOrEqualToThreshold, GreaterThanThreshold, LessThanThreshold, LessThanOrEqualToThreshold, LessThanLowerOrGreaterThanUpperThreshold, LessThanLowerThreshold, GreaterThanUpperThreshold."
   }
